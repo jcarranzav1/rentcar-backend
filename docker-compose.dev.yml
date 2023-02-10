@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  app:
+    container_name: rentcar-server-dev
+    image: rentcar-server:dev
+    build:
+      context: .
+      target: development
+      dockerfile: ./Dockerfile
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+      - 3000:3000
+    env_file:
+        - .env
+    volumes:
+      - .:/usr/src/app
+    command: yarn run start:dev
