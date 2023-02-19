@@ -5,55 +5,30 @@ import {
   RequestMethod,
 } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { Request, Response } from 'express'
-import { LoggerModule } from 'nestjs-pino'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
 import config from './config/config'
-import {
-  CORRELATION_ID_HEADER,
-  RequestCorrelationID,
-} from './internal/infra/middleware/request-id'
+import logger from './config/logger'
+import { ApplicationModule } from './internal/application/application.module'
+import { OwnerAuthController } from './internal/infra/controllers/auth/auth.owner.controller'
+import { UserAuthController } from './internal/infra/controllers/auth/auth.user.controller'
+import { OwnerController } from './internal/infra/controllers/owner.controller'
+import { UserController } from './internal/infra/controllers/user.controller'
+import { RequestCorrelationID } from './internal/infra/middleware/request-id'
 
 @Module({
   imports: [
-    LoggerModule.forRoot({
-      pinoHttp: {
-        transport: {
-          target: 'pino-pretty',
-          options: {
-            colorize: true,
-            timestampKey: 'time',
-            singleLine: true,
-          },
-        },
-        customProps(req: Request) {
-          return {
-            correlationId: req[CORRELATION_ID_HEADER],
-          }
-        },
-        serializers: {
-          req: (req: Request) => ({
-            method: req.method,
-            url: req.url,
-            headers: {
-              host: req.headers.host,
-              'content-type': req.headers['content-type'],
-            },
-          }),
-          res: (res: Response) => ({
-            statusCode: res.statusCode,
-          }),
-        },
-      },
-    }),
+    logger,
     ConfigModule.forRoot({
       isGlobal: true,
       load: [config],
     }),
+    ApplicationModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [
+    UserAuthController,
+    UserController,
+    OwnerAuthController,
+    OwnerController,
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
