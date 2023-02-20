@@ -45,6 +45,7 @@ export class UserController {
       data: req.user,
       meta: {
         statusCode: 200,
+        message: 'Gzszet your profile successfully',
       },
     })
   }
@@ -59,12 +60,12 @@ export class UserController {
     updateUser: UpdateUserDto,
   ): Promise<void> {
     try {
-      console.log(req.user)
       const user = await this.userService.updateUser(req.user.email, updateUser)
       res.status(200).json({
         data: user,
         meta: {
           statusCode: 200,
+          message: 'Update your profile successfully',
         },
       })
     } catch (err) {
@@ -80,12 +81,12 @@ export class UserController {
     @Param('id') id: string,
   ): Promise<void> {
     try {
-      console.log('wat')
       const user = await this.userService.getUserByID(id)
       res.status(200).json({
         data: user,
         meta: {
           statusCode: 200,
+          message: `Get the user with id: ${id} successfully`,
         },
       })
     } catch (err) {

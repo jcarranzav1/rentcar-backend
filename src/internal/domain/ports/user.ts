@@ -1,12 +1,12 @@
 import { User } from '@prisma/client'
 import {
-  CreateUserModel,
   UpdateUserModel,
+  UserModel,
 } from 'src/internal/infra/adapter/models/user'
 import { PageOptionsDto } from '../dto/pagination/pagination'
 
 export interface IUserRepository {
-  createUser: (user: CreateUserModel) => Promise<User>
+  createUser: (user: UserModel) => Promise<User>
   getAllUsers: (pageOptionsDto: PageOptionsDto) => Promise<User[]>
   getAllUsersCount: () => Promise<number>
   getUserByEmail: (email: string) => Promise<User> | null

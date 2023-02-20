@@ -3,13 +3,13 @@ import { User } from '@prisma/client'
 import { PageOptionsDto } from 'src/internal/domain/dto/pagination/pagination'
 import { IUserRepository } from 'src/internal/domain/ports/user'
 import { PrismaService } from '../../database/prisma.service'
-import { CreateUserModel, UpdateUserModel } from '../models/user'
+import { UpdateUserModel, UserModel } from '../models/user'
 
 @Injectable()
 export class UserRepository implements IUserRepository {
   constructor(private prisma: PrismaService) {}
 
-  async createUser(createUser: CreateUserModel): Promise<User> {
+  async createUser(createUser: UserModel): Promise<User> {
     return await this.prisma.user.create({ data: createUser })
   }
 

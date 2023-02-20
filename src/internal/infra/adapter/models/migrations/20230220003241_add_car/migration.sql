@@ -10,7 +10,7 @@ CREATE TABLE "Cars" (
     "description" TEXT,
     "isRented" BOOLEAN NOT NULL DEFAULT false,
     "photos" TEXT[] DEFAULT ARRAY[]::TEXT[],
-    "ownerEmail" TEXT NOT NULL,
+    "ownerId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -18,8 +18,26 @@ CREATE TABLE "Cars" (
 );
 
 -- CreateTable
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL,
+    "name" VARCHAR(25) NOT NULL,
+    "lastname" VARCHAR(25) NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "cellphone" VARCHAR(25),
+    "country" VARCHAR(25),
+    "state" VARCHAR(25),
+    "about" TEXT,
+    "photo" VARCHAR(25),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Owner" (
-    "id" UUID NOT NULL,
+    "id" TEXT NOT NULL,
     "name" VARCHAR(25) NOT NULL,
     "lastname" VARCHAR(25) NOT NULL,
     "email" TEXT NOT NULL,
@@ -36,7 +54,10 @@ CREATE TABLE "Owner" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Owner_email_key" ON "Owner"("email");
 
 -- AddForeignKey
-ALTER TABLE "Cars" ADD CONSTRAINT "Cars_ownerEmail_fkey" FOREIGN KEY ("ownerEmail") REFERENCES "Owner"("email") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Cars" ADD CONSTRAINT "Cars_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "Owner"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

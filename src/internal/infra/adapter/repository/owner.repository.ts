@@ -3,13 +3,13 @@ import { Owner } from '@prisma/client'
 import { PageOptionsDto } from 'src/internal/domain/dto/pagination/pagination'
 import { IOwnerRepository } from 'src/internal/domain/ports/owner'
 import { PrismaService } from '../../database/prisma.service'
-import { CreateOwnerModel, UpdateOwnerModel } from '../models/owner'
+import { OwnerModel, UpdateOwnerModel } from '../models/owner'
 
 @Injectable()
 export class OwnerRepository implements IOwnerRepository {
   constructor(private prisma: PrismaService) {}
 
-  async createOwner(createOwner: CreateOwnerModel): Promise<Owner> {
+  async createOwner(createOwner: OwnerModel): Promise<Owner> {
     return await this.prisma.owner.create({ data: createOwner })
   }
 
@@ -32,6 +32,11 @@ export class OwnerRepository implements IOwnerRepository {
       },
       take,
       skip,
+      include: {
+        _count: {
+          select: { cars: true },
+        },
+      },
     })
   }
 
@@ -56,6 +61,9 @@ export class OwnerRepository implements IOwnerRepository {
     const owner = await this.prisma.owner.findUnique({
       where: {
         id,
+      },
+      include: {
+        cars: true,
       },
     })
     if (owner === null) {

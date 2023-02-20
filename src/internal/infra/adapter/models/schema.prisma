@@ -9,40 +9,41 @@ datasource db {
 }
 
 model Cars {
-  id          String   @id @default(uuid()) @db.Uuid
-  model       String   @db.VarChar(255)
-  price       Int      
-  type        String   
+  id          String    @id @default(uuid()) @db.Uuid
+  model       String    @db.VarChar(255)
+  price       Int
+  type        String
   make        String
-  seats       String   
-  doors       String?  
-  description String?  @db.Text
-  isRented    Boolean  @default(false)
-  photos      String[] @default([])
-  ownerEmail  String
-  owner       Owner?   @relation(fields: [ownerEmail], references: [email])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  seats       String
+  doors       String?
+  description String?   @db.Text
+  isRented    Boolean   @default(false)
+  photos      String[]  @default([])
+  ownerId     String
+  owner       Owner     @relation(fields: [ownerId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  Booking     Booking[]
 }
 
-
 model User {
-  id        String   @id @default(uuid()) @db.Uuid
-  name      String   @db.VarChar(25)
-  lastname  String   @db.VarChar(25)
-  email     String   @unique
+  id        String    @id @default(uuid())
+  name      String    @db.VarChar(25)
+  lastname  String    @db.VarChar(25)
+  email     String    @unique
   password  String
-  cellphone String?  @db.VarChar(25)
-  country   String?  @db.VarChar(25)
-  state     String?  @db.VarChar(25)
-  about     String?  @db.Text
-  photo     String?  @db.VarChar(25)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  cellphone String?   @db.VarChar(25)
+  country   String?   @db.VarChar(25)
+  state     String?   @db.VarChar(25)
+  about     String?   @db.Text
+  photo     String?   @db.VarChar(25)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Booking   Booking[]
 }
 
 model Owner {
-  id        String   @id @default(uuid()) @db.Uuid
+  id        String   @id @default(uuid())
   name      String   @db.VarChar(25)
   lastname  String   @db.VarChar(25)
   email     String   @unique
@@ -52,12 +53,19 @@ model Owner {
   state     String?  @db.VarChar(25)
   about     String?  @db.Text
   photo     String?  @db.VarChar(25)
-  cars      Cars[]  
+  cars      Cars[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-
-
-
-
+model Booking {
+  id        String   @id @default(uuid())
+  carId     String
+  car       Cars     @relation(fields: [carId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  startDate DateTime
+  endDate   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

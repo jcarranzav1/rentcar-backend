@@ -9,6 +9,7 @@ import {
   JwtStrategyOwner,
   JwtStrategyUser,
 } from './auth/stategies/jwt.strategy'
+import { CarsService } from './cars.service'
 import { OwnerService } from './owner.service'
 import { UserService } from './user.service'
 
@@ -26,17 +27,19 @@ import { UserService } from './user.service'
   ],
   providers: [
     { provide: 'IUserService', useClass: UserService },
-    { provide: 'IOwnerService', useClass: OwnerService },
     { provide: 'IUserAuthService', useClass: UserAuthService },
+    { provide: 'IOwnerService', useClass: OwnerService },
     { provide: 'IOwnerAuthService', useClass: OwnerAuthService },
+    { provide: 'ICarsService', useClass: CarsService },
     JwtStrategyUser,
     JwtStrategyOwner,
   ],
   exports: [
     { provide: 'IUserService', useClass: UserService },
-    { provide: 'IOwnerService', useClass: OwnerService },
     { provide: 'IUserAuthService', useClass: UserAuthService },
+    { provide: 'IOwnerService', useClass: OwnerService },
     { provide: 'IOwnerAuthService', useClass: OwnerAuthService },
+    { provide: 'ICarsService', useClass: CarsService },
   ],
 })
 export class ApplicationModule {}

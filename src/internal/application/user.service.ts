@@ -1,4 +1,4 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common'
+import { Inject, Injectable, NotFoundException } from '@nestjs/common'
 import {
   PageOptionsDto,
   paginationParams,
@@ -50,7 +50,7 @@ export class UserService implements IUserService {
     try {
       const user = await this.userRepository.getUserByID(id)
       if (user === null) {
-        throw new BadRequestException('The user not exist')
+        throw new NotFoundException('The user not exist')
       }
 
       return omitPassword(user)

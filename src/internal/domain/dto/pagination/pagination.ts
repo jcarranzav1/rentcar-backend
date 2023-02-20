@@ -37,7 +37,6 @@ export function paginationParams(
   const totalPages = Math.ceil(totalItems / take)
   const hasPreviousPage = page > 1
   const hasNextPage = page < totalPages
-  console.log(totalPages, hasNextPage, hasPreviousPage)
 
   return {
     take,

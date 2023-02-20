@@ -45,6 +45,7 @@ export class OwnerController {
       data: req.user,
       meta: {
         statusCode: 200,
+        message: 'Get your profile successfully',
       },
     })
   }
@@ -67,6 +68,7 @@ export class OwnerController {
         data: owner,
         meta: {
           statusCode: 200,
+          message: 'Update your profile successfully',
         },
       })
     } catch (err) {
@@ -87,6 +89,7 @@ export class OwnerController {
         data: owner,
         meta: {
           statusCode: 200,
+          message: `Get the owner with id: ${id} successfully`,
         },
       })
     } catch (err) {

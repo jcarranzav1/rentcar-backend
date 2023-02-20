@@ -1,6 +1,6 @@
 import { CreateUserDto, UpdateUserDto } from 'src/internal/domain/dto/user/user'
 
-export interface CreateUserModel {
+export interface UserModel {
   name: string
   lastname: string
   email: string
@@ -12,9 +12,9 @@ export interface CreateUserModel {
   photo?: string
 }
 
-export type UpdateUserModel = Partial<CreateUserModel>
+export type UpdateUserModel = Partial<UserModel>
 
-export function CreateUserToModel(createUser: CreateUserDto): CreateUserModel {
+export function CreateUserToModel(createUser: CreateUserDto): UserModel {
   return {
     name: createUser.name,
     lastname: createUser.lastname,

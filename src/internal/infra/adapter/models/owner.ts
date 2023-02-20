@@ -3,7 +3,7 @@ import {
   UpdateOwnerDto,
 } from 'src/internal/domain/dto/owner/owner'
 
-export interface CreateOwnerModel {
+export interface OwnerModel {
   name: string
   lastname: string
   email: string
@@ -15,11 +15,9 @@ export interface CreateOwnerModel {
   photo?: string
 }
 
-export type UpdateOwnerModel = Partial<CreateOwnerModel>
+export type UpdateOwnerModel = Partial<OwnerModel>
 
-export function CreateOwnerToModel(
-  createOwner: CreateOwnerDto,
-): CreateOwnerModel {
+export function CreateOwnerToModel(createOwner: CreateOwnerDto): OwnerModel {
   return {
     name: createOwner.name,
     lastname: createOwner.lastname,

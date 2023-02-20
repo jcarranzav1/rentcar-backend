@@ -96,7 +96,7 @@ export class OwnerAuthService implements IOwnerAuthService {
     try {
       const owner = await this.ownerRepository.getOwnerByEmail(email)
       if (owner === null) {
-        throw new UnauthorizedException('owner not exist')
+        throw new UnauthorizedException('This account not exist')
       }
       return owner
     } catch (err) {

@@ -34,6 +34,7 @@ export class OwnerAuthController {
         meta: {
           statusCode: 200,
           token,
+          message: `Account created successfully`,
         },
       })
     } catch (err) {
@@ -55,6 +56,7 @@ export class OwnerAuthController {
         meta: {
           statusCode: 200,
           token,
+          message: `Account login successfully`,
         },
       })
     } catch (err) {

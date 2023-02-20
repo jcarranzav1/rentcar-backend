@@ -30,6 +30,7 @@ export class UserAuthController {
         meta: {
           statusCode: 200,
           token,
+          message: `Account created successfully`,
         },
       })
     } catch (err) {
@@ -51,6 +52,7 @@ export class UserAuthController {
         meta: {
           statusCode: 200,
           token,
+          message: `Account login successfully`,
         },
       })
     } catch (err) {

@@ -1,4 +1,4 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common'
+import { Inject, Injectable, NotFoundException } from '@nestjs/common'
 import { UpdateOwnerDto } from '../domain/dto/owner/owner'
 import {
   IOwnerResponse,
@@ -54,7 +54,7 @@ export class OwnerService implements IOwnerService {
     try {
       const owner = await this.ownerRepository.getOwnerByID(id)
       if (owner === null) {
-        throw new BadRequestException('The owner not exist')
+        throw new NotFoundException('The owner not exist')
       }
 
       return omitPassword(owner)
