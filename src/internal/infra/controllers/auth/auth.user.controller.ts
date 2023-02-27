@@ -8,7 +8,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common'
 import { IUserAuthService } from 'src/internal/application/auth/auth.user.service'
-import { CreateUserDto, LoginUserDto } from 'src/internal/domain/dto/user/user'
+import { CreateUserDto, LoginUserDto } from 'src/internal/domain/dto/user'
 
 @Controller('auth/user')
 export class UserAuthController {
@@ -25,10 +25,10 @@ export class UserAuthController {
   ): Promise<void> {
     try {
       const { user, token } = await this.authService.signup(createUserDto)
-      res.status(200).json({
+      res.status(201).json({
         data: user,
         meta: {
-          statusCode: 200,
+          statusCode: 201,
           token,
           message: `Account created successfully`,
         },

@@ -9,8 +9,10 @@ import {
   JwtStrategyOwner,
   JwtStrategyUser,
 } from './auth/stategies/jwt.strategy'
+import { BookingService } from './booking.service'
 import { CarsService } from './cars.service'
 import { OwnerService } from './owner.service'
+import { MercadoPagoService } from './payment/mercado-pago.service'
 import { UserService } from './user.service'
 
 @Module({
@@ -31,8 +33,10 @@ import { UserService } from './user.service'
     { provide: 'IOwnerService', useClass: OwnerService },
     { provide: 'IOwnerAuthService', useClass: OwnerAuthService },
     { provide: 'ICarsService', useClass: CarsService },
+    { provide: 'IBookingService', useClass: BookingService },
     JwtStrategyUser,
     JwtStrategyOwner,
+    MercadoPagoService,
   ],
   exports: [
     { provide: 'IUserService', useClass: UserService },
@@ -40,6 +44,7 @@ import { UserService } from './user.service'
     { provide: 'IOwnerService', useClass: OwnerService },
     { provide: 'IOwnerAuthService', useClass: OwnerAuthService },
     { provide: 'ICarsService', useClass: CarsService },
+    { provide: 'IBookingService', useClass: BookingService },
   ],
 })
 export class ApplicationModule {}

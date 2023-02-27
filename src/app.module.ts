@@ -10,6 +10,7 @@ import logger from './config/logger'
 import { ApplicationModule } from './internal/application/application.module'
 import { OwnerAuthController } from './internal/infra/controllers/auth/auth.owner.controller'
 import { UserAuthController } from './internal/infra/controllers/auth/auth.user.controller'
+import { BookingController } from './internal/infra/controllers/booking.controller'
 import { CarController } from './internal/infra/controllers/cars.controller'
 import { OwnerController } from './internal/infra/controllers/owner.controller'
 import { UserController } from './internal/infra/controllers/user.controller'
@@ -25,6 +26,7 @@ import { RequestCorrelationID } from './internal/infra/middleware/request-id'
     ApplicationModule,
   ],
   controllers: [
+    BookingController,
     UserAuthController,
     UserController,
     OwnerAuthController,

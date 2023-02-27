@@ -14,8 +14,8 @@ import {
 } from '@nestjs/common'
 import { JwtUserAuthGuard } from 'src/internal/application/auth/guards/jwt-auth.guard'
 import { IUserService } from 'src/internal/application/user.service'
-import { PageOptionsDto } from 'src/internal/domain/dto/pagination/pagination'
-import { UpdateUserDto } from 'src/internal/domain/dto/user/user'
+import { PageOptionsDto } from 'src/internal/domain/dto/pagination'
+import { UpdateUserDto } from 'src/internal/domain/dto/user'
 
 @Controller('user')
 export class UserController {

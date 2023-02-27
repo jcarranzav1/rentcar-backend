@@ -13,8 +13,8 @@ import {
 } from '@nestjs/common'
 import { JwtOwnerAuthGuard } from 'src/internal/application/auth/guards/jwt-auth.guard'
 import { ICarsService } from 'src/internal/application/cars.service'
-import { CreateCarDto, UpdateCarDto } from 'src/internal/domain/dto/cars/cars'
-import { PageOptionsDto } from 'src/internal/domain/dto/pagination/pagination'
+import { CreateCarDto, UpdateCarDto } from 'src/internal/domain/dto/cars'
+import { PageOptionsDto } from 'src/internal/domain/dto/pagination'
 
 @Controller('cars')
 export class CarController {
@@ -33,10 +33,10 @@ export class CarController {
   ): Promise<void> {
     try {
       const car = await this.carsService.createCar(createCarDto, req.user.id)
-      res.status(200).json({
+      res.status(201).json({
         data: car,
         meta: {
-          statusCode: 200,
+          statusCode: 201,
         },
       })
     } catch (err) {

@@ -7,11 +7,11 @@ import {
 import { JwtService } from '@nestjs/jwt'
 import { User } from '@prisma/client'
 import { compare, hash } from 'bcrypt'
-import { CreateUserDto, LoginUserDto } from 'src/internal/domain/dto/user/user'
+import { CreateUserDto, LoginUserDto } from 'src/internal/domain/dto/user'
 import {
   IUserTokenResponse,
   omitPassword,
-} from 'src/internal/domain/dto/user/user.response'
+} from 'src/internal/domain/dto/user.response'
 import { IUserRepository } from 'src/internal/domain/ports/user'
 import { CreateUserToModel } from 'src/internal/infra/adapter/models/user'
 

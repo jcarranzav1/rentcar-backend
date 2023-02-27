@@ -7,7 +7,7 @@ import { AppModule } from './app.module'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   const configService = app.get(ConfigService)
-  const serverPort = configService.get<number>('SERVER_PORT')
+  const serverPort = configService.get<number>('port')
 
   app.setGlobalPrefix('/api')
   app.useLogger(app.get(Logger))

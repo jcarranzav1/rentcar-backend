@@ -7,14 +7,11 @@ import {
 import { JwtService } from '@nestjs/jwt'
 import { Owner } from '@prisma/client'
 import { compare, hash } from 'bcrypt'
-import {
-  CreateOwnerDto,
-  LoginOwnerDto,
-} from 'src/internal/domain/dto/owner/owner'
+import { CreateOwnerDto, LoginOwnerDto } from 'src/internal/domain/dto/owner'
 import {
   IOwnerTokenResponse,
   omitPassword,
-} from 'src/internal/domain/dto/owner/owner.response'
+} from 'src/internal/domain/dto/owner.response'
 import { IOwnerRepository } from 'src/internal/domain/ports/owner'
 import { CreateOwnerToModel } from 'src/internal/infra/adapter/models/owner'
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { Owner } from '@prisma/client'
-import { PageOptionsDto } from 'src/internal/domain/dto/pagination/pagination'
+import { PageOptionsDto } from 'src/internal/domain/dto/pagination'
 import { IOwnerRepository } from 'src/internal/domain/ports/owner'
 import { PrismaService } from '../../database/prisma.service'
 import { OwnerModel, UpdateOwnerModel } from '../models/owner'

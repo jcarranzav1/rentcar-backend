@@ -1,4 +1,4 @@
-import { CreateUserDto, UpdateUserDto } from 'src/internal/domain/dto/user/user'
+import { CreateUserDto, UpdateUserDto } from 'src/internal/domain/dto/user'
 
 export interface UserModel {
   name: string

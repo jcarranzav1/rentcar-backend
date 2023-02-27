@@ -1,11 +1,8 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common'
-import {
-  PageOptionsDto,
-  paginationParams,
-} from '../domain/dto/pagination/pagination'
-import { PageDto } from '../domain/dto/pagination/paginationResponse'
-import { UpdateUserDto } from '../domain/dto/user/user'
-import { IUserResponse, omitPassword } from '../domain/dto/user/user.response'
+import { PageOptionsDto, paginationParams } from '../domain/dto/pagination'
+import { PageDto } from '../domain/dto/paginationResponse'
+import { UpdateUserDto } from '../domain/dto/user'
+import { IUserResponse, omitPassword } from '../domain/dto/user.response'
 import { IUserRepository } from '../domain/ports/user'
 
 export interface IUserService {

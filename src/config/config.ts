@@ -6,4 +6,7 @@ export default () => ({
     secret: process.env.JWT_SECRET_KEY,
     expires: process.env.JWT_EXPIRES_TIME,
   },
+  mercadoPago: {
+    token: process.env.MERCADO_PAGO_TOKEN,
+  },
 })

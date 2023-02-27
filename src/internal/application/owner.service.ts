@@ -1,14 +1,8 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common'
-import { UpdateOwnerDto } from '../domain/dto/owner/owner'
-import {
-  IOwnerResponse,
-  omitPassword,
-} from '../domain/dto/owner/owner.response'
-import {
-  PageOptionsDto,
-  paginationParams,
-} from '../domain/dto/pagination/pagination'
-import { PageDto } from '../domain/dto/pagination/paginationResponse'
+import { UpdateOwnerDto } from '../domain/dto/owner'
+import { IOwnerResponse, omitPassword } from '../domain/dto/owner.response'
+import { PageOptionsDto, paginationParams } from '../domain/dto/pagination'
+import { PageDto } from '../domain/dto/paginationResponse'
 import { IOwnerRepository } from '../domain/ports/owner'
 
 export interface IOwnerService {

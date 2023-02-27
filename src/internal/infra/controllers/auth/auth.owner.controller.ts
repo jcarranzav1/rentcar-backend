@@ -8,10 +8,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common'
 import { IOwnerAuthService } from 'src/internal/application/auth/auth.owner.service'
-import {
-  CreateOwnerDto,
-  LoginOwnerDto,
-} from 'src/internal/domain/dto/owner/owner'
+import { CreateOwnerDto, LoginOwnerDto } from 'src/internal/domain/dto/owner'
 
 @Controller('auth/owner')
 export class OwnerAuthController {
@@ -29,10 +26,10 @@ export class OwnerAuthController {
   ): Promise<void> {
     try {
       const { owner, token } = await this.authService.signup(createOwnerDto)
-      res.status(200).json({
+      res.status(201).json({
         data: owner,
         meta: {
-          statusCode: 200,
+          statusCode: 201,
           token,
           message: `Account created successfully`,
         },

@@ -1,4 +1,4 @@
-import { CreateCarDto, UpdateCarDto } from 'src/internal/domain/dto/cars/cars'
+import { CreateCarDto, UpdateCarDto } from 'src/internal/domain/dto/cars'
 
 export interface CarsModel {
   model: string

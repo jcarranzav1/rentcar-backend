@@ -3,7 +3,7 @@ import {
   OwnerModel,
   UpdateOwnerModel,
 } from 'src/internal/infra/adapter/models/owner'
-import { PageOptionsDto } from '../dto/pagination/pagination'
+import { PageOptionsDto } from '../dto/pagination'
 
 export interface IOwnerRepository {
   createOwner: (owner: OwnerModel) => Promise<Owner>

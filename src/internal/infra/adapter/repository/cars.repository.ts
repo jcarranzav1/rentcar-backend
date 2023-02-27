@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { Cars, Prisma } from '@prisma/client'
-import { PageOptionsDto } from 'src/internal/domain/dto/pagination/pagination'
+import { PageOptionsDto } from 'src/internal/domain/dto/pagination'
 import { ICarsRepository } from 'src/internal/domain/ports/cars'
 import { PrismaService } from '../../database/prisma.service'
 import { CarsModel, UpdateCarsModel } from '../models/cars'

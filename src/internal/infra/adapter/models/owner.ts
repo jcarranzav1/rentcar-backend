@@ -1,7 +1,4 @@
-import {
-  CreateOwnerDto,
-  UpdateOwnerDto,
-} from 'src/internal/domain/dto/owner/owner'
+import { CreateOwnerDto, UpdateOwnerDto } from 'src/internal/domain/dto/owner'
 
 export interface OwnerModel {
   name: string

@@ -5,12 +5,9 @@ import {
   NotFoundException,
 } from '@nestjs/common'
 import { Cars } from '@prisma/client'
-import { CreateCarDto, UpdateCarDto } from '../domain/dto/cars/cars'
-import {
-  PageOptionsDto,
-  paginationParams,
-} from '../domain/dto/pagination/pagination'
-import { PageDto } from '../domain/dto/pagination/paginationResponse'
+import { CreateCarDto, UpdateCarDto } from '../domain/dto/cars'
+import { PageOptionsDto, paginationParams } from '../domain/dto/pagination'
+import { PageDto } from '../domain/dto/paginationResponse'
 import { ICarsRepository } from '../domain/ports/cars'
 import { CreateCarsToModel } from '../infra/adapter/models/cars'
 
@@ -39,7 +36,7 @@ export class CarsService implements ICarsService {
   async createCar(createCarDto: CreateCarDto, ownerId: string): Promise<Cars> {
     try {
       const carModel = CreateCarsToModel(createCarDto, ownerId)
-      return this.carsRepository.createCar(carModel)
+      return await this.carsRepository.createCar(carModel)
     } catch (err) {
       throw err
     }

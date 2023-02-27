@@ -3,7 +3,7 @@ import {
   UpdateUserModel,
   UserModel,
 } from 'src/internal/infra/adapter/models/user'
-import { PageOptionsDto } from '../dto/pagination/pagination'
+import { PageOptionsDto } from '../dto/pagination'
 
 export interface IUserRepository {
   createUser: (user: UserModel) => Promise<User>

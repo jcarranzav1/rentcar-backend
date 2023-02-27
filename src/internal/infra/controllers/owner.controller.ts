@@ -14,8 +14,8 @@ import {
 } from '@nestjs/common'
 import { JwtOwnerAuthGuard } from 'src/internal/application/auth/guards/jwt-auth.guard'
 import { IOwnerService } from 'src/internal/application/owner.service'
-import { UpdateOwnerDto } from 'src/internal/domain/dto/owner/owner'
-import { PageOptionsDto } from 'src/internal/domain/dto/pagination/pagination'
+import { UpdateOwnerDto } from 'src/internal/domain/dto/owner'
+import { PageOptionsDto } from 'src/internal/domain/dto/pagination'
 
 @Controller('owner')
 export class OwnerController {

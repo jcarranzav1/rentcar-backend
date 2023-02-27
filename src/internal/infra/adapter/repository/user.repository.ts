@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { User } from '@prisma/client'
-import { PageOptionsDto } from 'src/internal/domain/dto/pagination/pagination'
+import { PageOptionsDto } from 'src/internal/domain/dto/pagination'
 import { IUserRepository } from 'src/internal/domain/ports/user'
 import { PrismaService } from '../../database/prisma.service'
 import { UpdateUserModel, UserModel } from '../models/user'

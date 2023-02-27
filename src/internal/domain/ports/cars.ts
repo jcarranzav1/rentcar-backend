@@ -3,7 +3,7 @@ import {
   CarsModel,
   UpdateCarsModel,
 } from 'src/internal/infra/adapter/models/cars'
-import { PageOptionsDto } from '../dto/pagination/pagination'
+import { PageOptionsDto } from '../dto/pagination'
 
 export interface ICarsRepository {
   createCar: (cars: CarsModel) => Promise<Cars>
