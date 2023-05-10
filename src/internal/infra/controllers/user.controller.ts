@@ -45,7 +45,7 @@ export class UserController {
       data: req.user,
       meta: {
         statusCode: 200,
-        message: 'Gzszet your profile successfully',
+        message: 'Get your profile successfully',
       },
     })
   }
